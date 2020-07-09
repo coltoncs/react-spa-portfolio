@@ -20,7 +20,7 @@ class SkillCard extends Component{
     render(){
         return(
             <div className="skill">
-                <h1><a href="" onClick={this.handleClick}>{this.props.skill}</a></h1>
+                <button onClick={this.handleClick}>{this.props.skill}</button>
             </div>
         )
     }
