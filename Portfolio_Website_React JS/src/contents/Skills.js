@@ -1,26 +1,27 @@
-import React, { Component } from 'react'
-import SkillCard from '../components/SkillCard'
+import React from 'react';
+import SkillCard from '../components/SkillCard';
+import { useSpring, animated, config } from 'react-spring';
 
-class Skills extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            skills: ['HTML', 'CSS', 'JS', 'PHP', 'REACT JS', 'NETLIFY', 'POSTMAN', 'VS CODE', 'PYTHON', 'DJANGO', 'SQL', 'MONGODB', '.NET', 'AWS', 'PHOTOSHOP', 'ILLUSTRATOR', 'DREAMWEAVER']
-        };
-    }
+function Skills() {
+    const skills = ['HTML', 'CSS', 'JS', 'PHP', 'REACT JS', 'NETLIFY', 'POSTMAN', 'VS CODE', 'PYTHON', 'DJANGO', 'SQL', 'MONGODB', '.NET', 'AWS', 'PHOTOSHOP', 'ILLUSTRATOR', 'DREAMWEAVER'];
+    const prop = useSpring({
+        opacity: 1,
+        from: {
+            opacity: 0,
+        },
+        config: config.slow,
+    })
 
-    render() {
-        return (
-            <div className="condiv skills">
-                <h1 className="subtopic">My Skills</h1>
-                <div className="skill-group">
-                    {this.state.skills.map((value) => {
-                        return <SkillCard skill={value} />
-                    })}
-                </div>
+    return (
+        <animated.div className="condiv skills" style={prop}>
+            <h1 className="subtopic">My Skills</h1>
+            <div className="skill-group">
+                {skills.map((value) => {
+                    return <SkillCard skill={value} />
+                })}
             </div>
-        )
-    }
+        </animated.div>
+    )
 }
 
 export default Skills
